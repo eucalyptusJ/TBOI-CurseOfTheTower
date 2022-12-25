@@ -1,0 +1,60 @@
+<ItemPools>
+    <Pool Name="treasure">
+        <Item Name="Tarot Bombs" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Pop-O-Matic" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Kerosene" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Ice Cream" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name ="Lil Rainmaker" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="greedTreasure">
+        <Item Name="Tarot Bombs" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Pop-O-Matic" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Kerosene" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Ice Cream" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name ="Lil Rainmaker" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="shop">
+        <Item Name="White Belt" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="greedShop">
+        <Item Name="White Belt" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Pain Killers" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="devil">
+        <Item Name="Poker Face" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Dark Orb" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Terrorporter" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="greedDevil">
+        <Item Name="Poker Face" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Terrorporter" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Dark Orb" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="secret">
+        <Item Name="Pain Killers" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Tarot Bombs" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Dark Orb" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="ultraSecret">
+        <Item Name="Poker Face" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="bombBum">
+        <Item Name="Tarot Bombs" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="babyShop">
+        <Item Name ="Lil Rainmaker" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+
+    <Pool Name="curse">
+        <Item Name="Terrorporter" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+    </Pool>
+</ItemPools>

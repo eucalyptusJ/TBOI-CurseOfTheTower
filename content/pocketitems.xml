@@ -1,0 +1,7 @@
+<pocketitems>
+    <!-- Pills -->
+    <pilleffect name="Who am I?" class="3" mimiccharge="6" />
+
+    <!-- Cards -->
+    <card type="special" pickup="1" description="DWNLD-COTTW-1T0U9" name="Gift Card" hud="GiftCard" mimiccharge="12" />
+</pocketitems>

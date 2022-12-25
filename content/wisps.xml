@@ -1,0 +1,29 @@
+<wisps gfxroot="gfx/familiar/wisps/">
+    <!-- Colors -->
+	<color name="flame_black" r="20" g="20" b="20"/>
+	<color name="core_black" r="710" g="710" b="710" or="-512" og="-512" ob="-512"/>
+	<color name="tear_black" r="710" g="710" b="710" or="-512" og="-512" ob="-512"/>
+	
+	<color name="flame_orange" r="400" g="250" b="60"/>
+	<color name="core_orange" r="300" g="200" b="10"/>
+	<color name="tear_orange" r="260" g="180" b="90" or="70" og="35"/>
+	
+	<color name="flame_grey" r="120" g="120" b="120"/>
+	<color name="core_grey" r="200" g="200" b="200"/>
+	<color name="tear_grey" cr="180" cg="180" cb="180" ca="255"/>
+
+	<color name="flame_red" r="500" g="220" b="220"/>
+	<color name="core_red" r="255" g="60" b="60"/>
+	<color name="tear_red" r="180" g="60" b="80" or="30"/>
+	
+	<color name="flame_dark_red" r="512" g="0" b="0"/>
+	<color name="core_dark_red" r="190" g="10" b="10"/>
+	<color name="tear_dark_red" r="130" g="10" b="10" or="30"/>
+
+    <!-- Wisps -->
+
+	<!-- Kerosene -->
+    <wisp id="7" hp="1" damage="1" flameColor="flame_orange" coreColor="core_black" procChance="0.33" tearFlags2="3 32" tearColor="tear_orange" tearColor2="tear_grey" />
+	<!-- Terrorporter -->
+	<wisp id="10" hp="10" damage="1" flameColor="flame_red" coreColor="core_black" tearColor="tear_red" tearFlags="20" coreGfx="flickering.png" count="0" />
+</wisps>

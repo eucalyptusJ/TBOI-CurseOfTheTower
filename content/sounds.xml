@@ -1,0 +1,14 @@
+<sounds root="sfx/">
+	<sound name="WhoAmI">
+		<sample weight="1" path="voiceover/whoami.wav" />
+		<sample weight="1" path="voiceover/whoami2.wav" />
+		<sample weight="1" path="voiceover/whoami3.wav" />
+	</sound>
+	<sound name="WhoAmIHorse">
+		<sample weight="1" path="voiceover/whoamihorse.wav" />
+	</sound>
+	<sound name="GiftCard">
+		<sample weight="1" path="voiceover/giftcard.wav" />
+		<sample weight="1" path="voiceover/giftcard2.wav" />
+	</sound>
+</sounds>

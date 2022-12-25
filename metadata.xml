@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Curse Of The Tower | 11 items and more</name>
+    <directory>curseofthetower</directory>
+    <id>2906400071</id>
+    <description>
+		[h1]Content[/h1]
+		[list]
+		[*]11 collectibles
+		[*]4 trinkets
+		[*]2 pocket items
+		[*]20 rooms
+		[/list]
+
+
+		[h1]Future[/h1]
+		We plan to continue supporting this mod in the future with content updates, with the next one being about the same size as the current mod.
+
+
+		[h1]Credits[/h1]
+		[list]
+		[*]Mac Cheese: Art, design
+		[*]Eucalyptus: Coding, design, rooms
+		[*]TheSilentGamer: Art, design
+		[*]Arachne: Design, testing, art
+		[/list]
+
+
+		[h1]Special Thanks[/h1]
+		[list]
+		[*]Stamper: Voicelines
+		[*]Lytebringr, for modding tutorials
+		[*]Eufuu, for modding tutorials
+		[*]Xalum, for a code snippet
+		[*]Oatmealine, for a code snippet
+		[/list]
+
+		Item Spoilers: [spoiler][url=https://docs.google.com/spreadsheets/d/1KNn-xH7xzmuxcPf15_SG7DXV3KTwSabcZSjEvCYnBpM/edit#gid=0][/url][/spoiler]
+	</description>
+    <version>1.1</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Items"/>
+    <tag id="Active Items"/>
+    <tag id="Trinkets"/>
+    <tag id="Pills"/>
+    <tag id="Cards"/>
+    <tag id="Familiars"/>
+    <tag id="Rooms"/>
+</metadata>

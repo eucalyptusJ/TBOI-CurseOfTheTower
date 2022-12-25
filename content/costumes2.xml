@@ -1,0 +1,9 @@
+<costumes anm2root="gfx/characters/">
+	<costume id="1" anm2path="painkillers.anm2" type="passive" />
+	<costume id="3" anm2path="pokerface.anm2" type="passive" />
+	<costume id="4" anm2path="popomatic.anm2" type="passive" />
+	<costume id="5" anm2path="whitebelt.anm2" type="passive" />
+	<costume id="6" anm2path="icecream.anm2" type="passive" />
+	<costume id="8" anm2path="darkorb.anm2" type="passive" />
+	<costume id="11" anm2path="hexofthetower.anm2" type="passive" />
+</costumes>

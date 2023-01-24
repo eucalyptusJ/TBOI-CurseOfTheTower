@@ -44,6 +44,7 @@
 
     <Pool Name="ultraSecret">
         <Item Name="Poker Face" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
+        <Item Name="Terrorporter" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
     </Pool>
 
     <Pool Name="bombBum">

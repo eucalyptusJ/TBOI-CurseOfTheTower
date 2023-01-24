@@ -6,8 +6,8 @@
     <passive id="4" name="Pop-O-Matic" description="This means trouble" gfx="collectibles_popomatic.png" quality="1" tags="nolostbr quest" />
     <passive id="5" name="White Belt" cache="damage" description="Go easy on me!" gfx="collectibles_whitebelt.png" quality="3" tags="offensive" />
     <passive id="6" name="Ice Cream" cache="shotspeed range tearcolor" description="I scream, you scream" gfx="collectibles_icecream.png" quality="3" tags="offensive" />
-    <active id="7" name="Kerosene" description="Feel the burn!" gfx="collectibles_kerosene.png" maxcharges="1" quality="3" tags="offensive" />
-    <passive id="8" name="Dark Orb" description="Destined for failure" gfx="collectibles_darkorb.png" quality="3" devilprice='1' />
+    <active id="7" name="Kerosene" description="Feel the burn!" gfx="collectibles_kerosene.png" chargetype="timed" maxcharges="300" quality="3" tags="offensive" />
+    <passive id="8" name="Dark Orb" description="Destined for failure" gfx="collectibles_darkorb.png" quality="3" devilprice='1' tags="noeden" />
     <familiar id="9" name="Lil Rainmaker" cache="familiars" description="He's a little bit damp" gfx="collectibles_lilrainmaker.png" quality="3" tags="baby" />
     <active id="10" name="Terrorporter" description="Gorey teleports" gfx="collectibles_terrorporter.png" chargetype="timed" maxcharges="240" quality="2" />
     <passive id="11" name="Hex of The Tower" description="Enjoy chaos" gfx="collectibles_hexofthetower.png" quality="1" />

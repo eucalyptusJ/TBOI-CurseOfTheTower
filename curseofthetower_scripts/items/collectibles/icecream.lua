@@ -4,9 +4,10 @@ local utility = require("curseofthetower_scripts.utility")
 
 local iceCreamData = {
     TEAR_TRAIL_TIMEOUT = 20,
-    TEAR_IMPACT_PUDDLE_TIMEOUT = 999999999,
+    TEAR_IMPACT_PUDDLE_TIMEOUT = 60,
     CIRCLE_LASER_TRAIL_TIMEOUT = 20,
     FETUS_IMPACT_PUDDLE_TIMEOUT = 999999999,
+    FETUS_EXPLOSION_PUDDLE_SCALE = 1.8,
     SHOTSPEED_DEC = 0.20,
     RANGE_DEC = 0.50 * 40,
     CREEP_COLOR = Color(5, 1, 1, 1, 0, 0, 0),
@@ -16,6 +17,7 @@ local iceCreamData = {
 
 function iceCream:spawnIceCreamCreep(target, timeout, entity, player) -- Used to spawn the creep and decide its color
     local variant, anm
+  
     if player:HasCollectible(CollectibleType.COLLECTIBLE_MYSTERIOUS_LIQUID) then
         variant = EffectVariant.PLAYER_CREEP_GREEN
         anm = "1000.023_creep (green).anm2"
@@ -26,7 +28,11 @@ function iceCream:spawnIceCreamCreep(target, timeout, entity, player) -- Used to
 
     local creep = Isaac.Spawn(EntityType.ENTITY_EFFECT, variant, 0, target, Vector(0,0), nil):ToEffect()
     if entity then
-        creep.Scale = entity.Scale
+        if entity.Type == EntityType.ENTITY_BOMB then -- Dr. Fetus explosion
+            creep.Scale = iceCreamData.FETUS_EXPLOSION_PUDDLE_SCALE
+        else
+            creep.Scale = entity.Scale
+        end
     end
 
     if player:HasTrinket(TrinketType.TRINKET_LOST_CORK) then -- Lost cork synergy
@@ -117,8 +123,31 @@ function iceCream:onLaserUpdate(laser) -- Lasers
     if not laser then return end
     local parent = laser.Parent
     if not parent then return end
-    local player = parent:ToPlayer()
+
+    local player
+
+    if parent.Type == EntityType.ENTITY_PLAYER then -- Regular case
+        player = parent:ToPlayer()
+
+    elseif parent.Type == EntityType.ENTITY_EFFECT then -- Anti-Gravity
+        local effect = parent:ToEffect()
+        player = effect.SpawnerEntity:ToPlayer()
+
+    elseif parent.Type == EntityType.ENTITY_LASER then -- Multishot
+        player = parent.Parent:ToPlayer()
+
+    elseif parent.Type == EntityType.ENTITY_FAMILIAR then -- Incubus and twisted pair
+
+        if parent.FamiliarVariant ~= FamiliarVariant.INCUBUS
+        and parent.FamiliarVariant ~= FamiliarVariant.FATES_REWARD
+        and parent.FamiliarVariant ~= FamiliarVariant.TWISTED_BABY
+        then return end
+
+        player = parent:ToFamiliar().Player
+    end
+
     if not player then return end
+
     if player:HasCollectible(enums.Collectibles.ICE_CREAM) then
         local sprite =  laser:GetSprite()
 
@@ -130,14 +159,34 @@ function iceCream:onLaserUpdate(laser) -- Lasers
             sprite.Color = iceCreamData.TEAR_COLOR
         end
 
-        local samplePoints = laser:GetNonOptimizedSamples()
-        for i = 0, #samplePoints - 1 do
-            local pos = samplePoints:Get(i)
-            iceCream:spawnIceCreamCreep(pos, iceCreamData.CIRCLE_LASER_TRAIL_TIMEOUT, nil, player)
+        if laser.FrameCount % 4 == 0 or laser.FrameCount == 1 then
+            local samplePoints = laser:GetNonOptimizedSamples()
+            for i = 0, #samplePoints - 1 do
+                local pos = samplePoints:Get(i)
+                iceCream:spawnIceCreamCreep(pos, iceCreamData.CIRCLE_LASER_TRAIL_TIMEOUT, nil, player)
+            end
         end
     end
 end
 curseTowerMod:AddCallback(ModCallbacks.MC_POST_LASER_UPDATE, iceCream.onLaserUpdate)
+
+function iceCream:onEffectUpdate(effect) -- Brimstone swirls
+    if not effect.SpawnerEntity then return end
+    local player = effect.SpawnerEntity:ToPlayer()
+    if not player then return end
+    if player:HasCollectible(enums.Collectibles.ICE_CREAM) and effect.Variant == EffectVariant.BRIMSTONE_SWIRL then
+        local sprite = effect:GetSprite()
+        if player:HasCollectible(CollectibleType.COLLECTIBLE_MYSTERIOUS_LIQUID) then
+            iceCreamData.GREEN_TEAR_COLOR:SetColorize(1, 3, 1, 1)
+            sprite.Color = iceCreamData.GREEN_TEAR_COLOR
+        else
+            iceCreamData.TEAR_COLOR:SetColorize(3, 1, 1, 1)
+            sprite.Color = iceCreamData.TEAR_COLOR
+        end
+        iceCream:spawnIceCreamCreep(effect.Position, iceCreamData.CIRCLE_LASER_TRAIL_TIMEOUT, nil, player)
+    end
+end
+curseTowerMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, iceCream.onEffectUpdate)
 
 function iceCream:onEntityRemove(entity) -- Dr. Fetus explosion
     if not entity then return end
@@ -149,7 +198,7 @@ function iceCream:onEntityRemove(entity) -- Dr. Fetus explosion
 
     if player:HasCollectible(enums.Collectibles.ICE_CREAM) then
         if bomb.IsFetus then
-            iceCream:spawnIceCreamCreep(bomb.Position, iceCreamData.FETUS_IMPACT_PUDDLE_TIMEOUT, nil, player)
+            iceCream:spawnIceCreamCreep(bomb.Position, iceCreamData.FETUS_IMPACT_PUDDLE_TIMEOUT, entity, player)
         end
     end
 end

@@ -39,7 +39,7 @@ curseTowerMod:AddCallback(ModCallbacks.MC_USE_CARD, giftCard.onUse, enums.Cards.
 function giftCard:onPickupInit(pickup)
     if not pickup then return end
     
-    if pickup.SubType == enums.Cards.GIFT_CARD then
+    if pickup.SubType == enums.Cards.GIFT_CARD and pickup.Variant == PickupVariant.PICKUP_TAROTCARD then
 		pickup:GetSprite():ReplaceSpritesheet(0,"gfx/items/pick ups/giftcard.png")
 		pickup:GetSprite():LoadGraphics()
 	end

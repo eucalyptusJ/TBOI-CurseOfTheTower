@@ -4,7 +4,8 @@ local enums = require("curseofthetower_scripts.enums")
 local utility = require("curseofthetower_scripts.utility")
 
 local keroseneData = {
-    BASE_CHANCE = 35
+    BASE_CHANCE = 35,
+    ENEMY_TINT = Color(0.15, 0.15, 0.15, 1, 0, 0, 0) -- Gish
 }
 
 function kerosene:onUse(item, rng, entity)
@@ -13,7 +14,7 @@ function kerosene:onUse(item, rng, entity)
     if not player then return end
     player:AnimateCollectible(enums.Collectibles.KEROSENE, "Pickup", "PlayerPickupSparkle")
     for i, entity in pairs(Isaac.GetRoomEntities()) do
-        if entity:GetData().keroseneDoused == true then
+        if entity:GetData().KeroseneDoused == true or (entity:ToEffect() and entity:ToEffect().Variant == EffectVariant.PLAYER_CREEP_BLACK) then
             if utility:isJudasBirthright(player) then
                 local judasIgnite = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.HOT_BOMB_FIRE, 0, entity.Position, Vector(0,0), player):ToEffect()
                 local sprite = judasIgnite:GetSprite()
@@ -47,13 +48,24 @@ function kerosene:isGas(tear)
 end
 curseTowerMod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR, kerosene.isGas)
 
-function kerosene:onHit(tear, collider, low)
+function kerosene:onHit(tear, collider)
     if not collider then return end
     if collider:IsVulnerableEnemy() and collider:IsActiveEnemy() then
         if tear:HasTearFlags(TearFlags.TEAR_GISH) then
-            collider:GetData().keroseneDoused = true
+            collider:GetData().KeroseneDoused = true
         end
     end
 end
 curseTowerMod:AddCallback(ModCallbacks.MC_PRE_TEAR_COLLISION, kerosene.onHit)
+
+function kerosene:onPlayerUpdate()
+    for i, entity in pairs(Isaac.GetRoomEntities()) do
+        if entity:HasEntityFlags(EntityFlag.FLAG_SLOW) == false
+        and entity:GetData().KeroseneDoused == true
+        then
+            entity:GetData().KeroseneDoused = false
+        end
+    end
+end
+curseTowerMod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, kerosene.onPlayerUpdate)
 return kerosene

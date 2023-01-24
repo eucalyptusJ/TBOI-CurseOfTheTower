@@ -1,5 +1,6 @@
 curseTowerMod = RegisterMod("Curse Of The Tower", 1)
 local savedata = require("curseofthetower_scripts.savedata")
+local enums = require("curseofthetower_scripts.enums")
 -- savedata:preGameExit(willSave)
 -- savedata:postGameStarted(isGameOver)
 -- savedata:onPlayerInit()

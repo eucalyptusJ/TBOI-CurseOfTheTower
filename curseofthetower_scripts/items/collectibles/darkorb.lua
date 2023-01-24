@@ -27,7 +27,7 @@ function darkOrb:onPlayerUpdate(player)
  
     if playerTaken:IsItemQueueEmpty() then
         isSpawning = false
-        playerTaken = false
+        playerTaken = nil
     return end
 
     if isSpawning == true then return end

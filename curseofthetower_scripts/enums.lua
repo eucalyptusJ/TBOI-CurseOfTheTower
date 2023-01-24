@@ -29,10 +29,6 @@ enums.Cards = {
     GIFT_CARD = Isaac.GetCardIdByName("GiftCard")
 }
 
-enums.Challenges = {
-    KEEPERS_CURSE = Isaac.GetChallengeIdByName("The Keeper's Curse")
-}
-
 enums.EntityVariants = {
     LIL_RAINMAKER = Isaac.GetEntityVariantByName("Lil Rainmaker")
 }

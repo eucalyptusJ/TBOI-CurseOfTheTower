@@ -15,7 +15,7 @@ curseTowerMod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, lilRainmaker.onFamiliar
 
 function lilRainmaker:onCache(player, cacheFlag)
 	if cacheFlag == CacheFlag.CACHE_FAMILIARS then
-		local lilRainmakerCount = player:GetCollectibleNum(enums.Collectibles.LIL_RAINMAKER) + player:GetEffects():GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_BOX_OF_FRIENDS)
+		local lilRainmakerCount = player:GetCollectibleNum(enums.Collectibles.LIL_RAINMAKER) + player:GetEffects():GetCollectibleEffectNum(enums.Collectibles.LIL_RAINMAKER)
 		player:CheckFamiliar(enums.EntityVariants.LIL_RAINMAKER, lilRainmakerCount, RNG())
 	end
 end
@@ -41,7 +41,9 @@ function lilRainmaker:onPlayerUpdate(player)
 					tear.HomingFriction = tear.HomingFriction * 1.1
 					tear.TearFlags = tear.TearFlags | TearFlags.TEAR_SPECTRAL
 					tear.TearFlags = tear.TearFlags | TearFlags.TEAR_HOMING
-					local frame = tear.FrameCount
+					if player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+						tear.CollisionDamage = tear.CollisionDamage * 2
+					end
 				end
 			end
 		end
@@ -82,7 +84,9 @@ function lilRainmaker:postRender()
 				if sprite:IsFinished("Spin") then
 					sprite:Play("End", true)
 				end
-				sprite:Play("Idle", true)
+				if sprite:IsPlaying("Float") ~= true then
+					sprite:Play("Float", true)
+				end
 			end
 		end
 	end

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-    <name>Curse Of The Tower | 11 items and more</name>
+    <name>Curse Of The Tower</name>
     <directory>curseofthetower</directory>
     <id>2906400071</id>
     <description>
@@ -10,6 +10,12 @@
 		[*]4 trinkets
 		[*]2 pocket items
 		[*]20 rooms
+		[/list]
+
+		[h1]Mod Support[/h1]
+		[list]
+		[*]External Item Descriptions
+		[*]Encyclopedia
 		[/list]
 
 
@@ -28,12 +34,16 @@
 
 		[h1]Special Thanks[/h1]
 		[list]
-		[*]Stamper: Voicelines
+		[*]Stamper, for voicelines
 		[*]Lytebringr, for modding tutorials
 		[*]Eufuu, for modding tutorials
 		[*]Xalum, for a code snippet
 		[*]Oatmealine, for a code snippet
 		[/list]
+
+		[h1]Mirrors[/h1]
+		[url=https://github.com/eucalyptusJ/TBOI-CurseOfTheTower/releases/tag/majorupdate]Github[/url]
+		[url=https://moddingofisaac.com/mod/3797/curse-of-the-tower]Modding of Isaac[/url]
 
 		Item Spoilers: [spoiler][url=https://docs.google.com/spreadsheets/d/1KNn-xH7xzmuxcPf15_SG7DXV3KTwSabcZSjEvCYnBpM/edit#gid=0][/url][/spoiler]
 	</description>

@@ -14,7 +14,8 @@ local exclude = {
     TearVariant.KEY_BLOOD,
     TearVariant.SWORD_BEAM,
     TearVariant.TECH_SWORD_BEAM,
-    TearVariant.ERASER
+    TearVariant.ERASER,
+    TearVariant.SPORE
 }
 
 function pokerFace:onHit(tear, collider, low)

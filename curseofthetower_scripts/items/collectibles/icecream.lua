@@ -41,9 +41,9 @@ function iceCream:spawnIceCreamCreep(target, timeout, entity, player) -- Used to
 
     local sprite = creep:GetSprite()
     if player:HasCollectible(CollectibleType.COLLECTIBLE_MYSTERIOUS_LIQUID) then
-        sprite:Load(anm)
+        sprite:Load(anm, true)
     else
-        sprite:Load(anm)
+        sprite:Load(anm, true)
         iceCreamData.CREEP_COLOR:SetColorize(3, 1, 1, 1)
         sprite.Color = iceCreamData.CREEP_COLOR
     end
@@ -134,13 +134,20 @@ function iceCream:onLaserUpdate(laser) -- Lasers
         player = effect.SpawnerEntity:ToPlayer()
 
     elseif parent.Type == EntityType.ENTITY_LASER then -- Multishot
+        if not parent.Parent then return end -- Fix error caused sometimes by Anti-Gravity + Soy Milk + Brimstone
         player = parent.Parent:ToPlayer()
 
-    elseif parent.Type == EntityType.ENTITY_FAMILIAR then -- Incubus and twisted pair
+        if not player and parent.Type == EntityType.ENTITY_LASER then -- Multishot Anti-Gravity
+            parent = parent.Parent -- Get effect that spawned laser
+            local effect = parent:ToEffect()
+            player = effect.SpawnerEntity:ToPlayer()
+        end
 
-        if parent.FamiliarVariant ~= FamiliarVariant.INCUBUS
-        and parent.FamiliarVariant ~= FamiliarVariant.FATES_REWARD
-        and parent.FamiliarVariant ~= FamiliarVariant.TWISTED_BABY
+    elseif parent.Type == EntityType.ENTITY_FAMILIAR then -- Incubus and Twisted Pair
+
+        if parent.Variant ~= FamiliarVariant.INCUBUS
+        and parent.Variant ~= FamiliarVariant.TWISTED_BABY
+        and parent.Variant ~= FamiliarVariant.CAINS_OTHER_EYE
         then return end
 
         player = parent:ToFamiliar().Player
@@ -159,7 +166,14 @@ function iceCream:onLaserUpdate(laser) -- Lasers
             sprite.Color = iceCreamData.TEAR_COLOR
         end
 
-        if laser.FrameCount % 4 == 0 or laser.FrameCount == 1 then
+        local everyXFrames = 4
+
+        if player:HasCollectible(CollectibleType.COLLECTIBLE_SOY_MILK)
+        or player:HasCollectible(CollectibleType.COLLECTIBLE_ALMOND_MILK) then
+            everyXFrames = 24
+        end
+
+        if laser.FrameCount % everyXFrames == 0 or laser.FrameCount == 1 then
             local samplePoints = laser:GetNonOptimizedSamples()
             for i = 0, #samplePoints - 1 do
                 local pos = samplePoints:Get(i)
@@ -170,11 +184,13 @@ function iceCream:onLaserUpdate(laser) -- Lasers
 end
 curseTowerMod:AddCallback(ModCallbacks.MC_POST_LASER_UPDATE, iceCream.onLaserUpdate)
 
-function iceCream:onEffectUpdate(effect) -- Brimstone swirls
+function iceCream:onEffectUpdate(effect) -- Brimstone swirls and Technology dots
     if not effect.SpawnerEntity then return end
     local player = effect.SpawnerEntity:ToPlayer()
     if not player then return end
-    if player:HasCollectible(enums.Collectibles.ICE_CREAM) and effect.Variant == EffectVariant.BRIMSTONE_SWIRL then
+    if player:HasCollectible(enums.Collectibles.ICE_CREAM)
+    and effect.Variant == EffectVariant.BRIMSTONE_SWIRL
+    or effect.Variant == EffectVariant.TECH_DOT then
         local sprite = effect:GetSprite()
         if player:HasCollectible(CollectibleType.COLLECTIBLE_MYSTERIOUS_LIQUID) then
             iceCreamData.GREEN_TEAR_COLOR:SetColorize(1, 3, 1, 1)

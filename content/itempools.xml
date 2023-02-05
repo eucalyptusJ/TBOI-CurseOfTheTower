@@ -38,7 +38,6 @@
 
     <Pool Name="secret">
         <Item Name="Pain Killers" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
-        <Item Name="Tarot Bombs" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
         <Item Name="Dark Orb" Weight="1" DecreaseBy="0.5" RemoveOn="0.1" />
     </Pool>
 

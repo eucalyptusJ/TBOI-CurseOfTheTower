@@ -68,7 +68,7 @@ function tarotBombs:onExplode(entity)
             if card > 0 and card < 22 then
                 player:UseCard(card, 0)
                 tarotExplode.Color = Color(8, 3, 9, 1)
-            end
+            else return end
 
             if delRoll <= tarotBombsData.REMOVAL_CHANCE then
                 player:SetCard(0, 0)

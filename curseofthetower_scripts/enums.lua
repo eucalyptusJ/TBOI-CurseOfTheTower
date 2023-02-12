@@ -21,9 +21,9 @@ enums.Trinkets = {
     REJECT_TECH = Isaac.GetTrinketIdByName("Reject Tech")
 }
 
-enums.Pills = {
-    WHO_AM_I = Isaac.GetPillEffectByName("Who am I?")
-}
+-- enums.Pills = {
+--     WHO_AM_I = Isaac.GetPillEffectByName("Who am I?")
+-- }
 
 enums.Cards = {
     GIFT_CARD = Isaac.GetCardIdByName("GiftCard")

@@ -138,11 +138,11 @@ function encyclopedia:addEncyclopedia()
             WikiDesc = Encyclopedia.EIDtoWiki(descriptions.Cards.GIFT_CARD),
         })
 
-        Encyclopedia.AddPill({
-            ID = enums.Pills.WHO_AM_I,
-            WikiDesc = Encyclopedia.EIDtoWiki(descriptions.Pills.WHO_AM_I),
-            Color = 9,
-        })
+        -- Encyclopedia.AddPill({
+        --     ID = enums.Pills.WHO_AM_I,
+        --     WikiDesc = Encyclopedia.EIDtoWiki(descriptions.Pills.WHO_AM_I),
+        --     Color = 9,
+        -- })
     end
 end
 

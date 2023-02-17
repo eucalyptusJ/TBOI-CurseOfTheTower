@@ -25,7 +25,7 @@ function eid:addEid()
 
         -- Pickups
         EID:addCard(enums.Cards.GIFT_CARD, descriptions.Cards.GIFT_CARD)
-        EID:addPill(enums.Pills.WHO_AM_I, descriptions.Pills.WHO_AM_I)
+        --EID:addPill(enums.Pills.WHO_AM_I, descriptions.Pills.WHO_AM_I)
 
         -- Book of Virtues
         EID.descriptions["en_us"].bookOfVirtuesWisps[enums.Collectibles.KEROSENE] = descriptions.BookOfVirtues.KEROSENE
